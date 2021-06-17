@@ -71,6 +71,7 @@ body {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
     border: 0.5px solid rgba(0, 0, 0, 0.12);
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .main-card-crud .header-card-crud {
@@ -83,4 +84,28 @@ body {
 
 .main-card-crud .header-card-crud  h3{
     color: rgb(29, 29, 29);
+}
+
+.main-card-crud .body-card-crud{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.main-card-crud .body-card-crud .line button{
+    padding: .5rem;
+    border: none;
+    color: white;
+    background: #00ACEA;  /* fallback for old browsers */
+    margin-bottom: 2rem;
+}
+
+.main-card-crud .body-card-crud .line button:hover{
+    background: #0092c7;  /* fallback for old browsers */
+    cursor: pointer;
 }
