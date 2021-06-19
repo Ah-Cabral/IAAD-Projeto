@@ -109,3 +109,7 @@ body {
     background: #0092c7;  /* fallback for old browsers */
     cursor: pointer;
 }
+
+.body-card-crud button{
+    width: 200px;
+}
