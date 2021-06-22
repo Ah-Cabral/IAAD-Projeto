@@ -8,8 +8,7 @@
 }
 
 body {
-    background: #00ACEA  /* fallback for old browsers */
-
+    background: #00ACEA  /* fallback fo@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');*/
 }
 
 .btn{
@@ -34,7 +33,7 @@ body {
     left: 50%;
     top: 50%;
     margin-left:-350px;
-    margin-top:-175px;
+    margin-top:-250px;
     /*Estilização do background*/
     background: #F6F6F6;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
@@ -43,17 +42,25 @@ body {
     overflow: hidden;
 }
 
+.trecho-card{
+    margin-top:-400px;
+}
+
 .main-card-crud .header-card-crud {
     width: 100%;
-    height: 2rem;
+    height: 3rem;
     text-align: center;
     background: #ebeaea;
     border-radius: 10px 10px 0 0;
     overflow: hidden;
+    padding: 15px;
+    margin-bottom: 1.2rem;
 }
 
-.main-card-crud .header-card-crud  h3{
+h3{
     color: rgb(29, 29, 29);
+    font-weight: bold;
+    font-size: 1rem;
 }
 
 .main-card-crud .body-card-crud{

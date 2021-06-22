@@ -8,7 +8,7 @@
 }
 
 body {
-    background: #00ACEA  /* fallback for old browsers */
+    background: #00ACEA  /* fallback fo@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');*/
 
 }
 
@@ -37,19 +37,20 @@ body {
 
 .main-card-crud .header-card-crud {
     width: 100%;
-    height: 8%;
+    height: 1.5rem;
     text-align: center;
     background: #ebeaea;
     border-radius: 10px 10px 0 0;
+    padding: 20px;
+    margin-bottom: 1.2rem;
 }
 
-.main-card-crud .header-card-crud  h3{
+.header-card-crud h3{
     color: rgb(29, 29, 29);
 }
 
 .main-card-crud .body-card-crud{
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
