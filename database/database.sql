@@ -76,10 +76,10 @@ create table Instancia_trecho(
     Codigo_aeroporto_chegada varchar(5) unique null, 
     Horario_chegada varchar(10) null,
     PRIMARY KEY(Numero_voo, Numero_trecho, Data)
-    constraint foreign key fk_ins_ar (Codigo_aeroporto_partida) references Aeroporto(Codigo_aeroporto),
-    constraint foreign key fk_ins_ar2 (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto),
-    constraint foreign key fk_ins_coar (Codigo_aeronave) references AERONAVE (Codigo_aeronave),
-    constraint foreign key fk_ins_ntr (Numero_trecho) references Trecho_voo(Numero_trecho)
+    -- constraint foreign key fk_ins_ar (Codigo_aeroporto_partida) references Aeroporto(Codigo_aeroporto),
+    -- constraint foreign key fk_ins_ar2 (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto),
+    -- constraint foreign key fk_ins_coar (Codigo_aeronave) references AERONAVE (Codigo_aeronave),
+    -- constraint foreign key fk_ins_ntr (Numero_trecho) references Trecho_voo(Numero_trecho)
 )ENGINE=InnoDB;
 
 -- foreign keys section
@@ -105,18 +105,19 @@ alter table PODE_POUSAR
 add foreign key(Nome_tipo_aeronave) references Tipo_aeronave(Nome_tipo_aeronave) ON UPDATE CASCADE ON DELETE CASCADE,
 add foreign key(Codigo_aeroporto) references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE;
 
--- alter table Instancia_trecho
--- -- not all fk inserted
--- -- does not work: missing index error 
--- -- reserva_assento fk is missing
--- -- Aeroporto table
--- add foreign key (Codigo_aeroporto_partida )references Aeroporto(Codigo_aeroporto),
--- add foreign key (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto),
--- -- AERONAVE table
--- add foreign key (Codigo_aeronave) references AERONAVE (Codigo_aeronave),
--- -- Trecho_voo table, error line
--- add foreign key(Numero_trecho) references Trecho_voo(Numero_trecho);
--- -- RESERVA_ASSENTO table 
+alter table Instancia_trecho
+-- not all fk inserted
+-- does not work: missing index error 
+-- reserva_assento fk is missing
+-- Aeroporto table
+add foreign key (Codigo_aeroporto_partida )references Aeroporto(Codigo_aeroporto),
+add foreign key (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto),
+-- AERONAVE table
+add foreign key (Codigo_aeronave) references AERONAVE (Codigo_aeronave),
+-- Trecho_voo table, error line
+add foreign key(Numero_trecho) references Trecho_voo(Numero_trecho)
+add foreign key ('int Column', Numero_trecho) references Trecho_voo **(Numero_trecho);**
+-- RESERVA_ASSENTO table 
 
 
 commit;
