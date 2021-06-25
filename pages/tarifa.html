@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Ícone do Site-->
+    <link rel="apple-touch-icon" sizes="180x180" href="src/assets/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="src/assets/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="src/assets/icon/favicon-16x16.png">
+    <link rel="manifest" href="src/assets/icon/site.webmanifest">
+
+    <link rel="stylesheet" href="../src/style/style.css">
+
+    <title> </AeroDev> </title>
+</head>
+<body>
+    
+    <div id="vanta-canvas" class="container">
+
+        <div class="card">
+            <header class="card-header">
+                 <h3> </AeroDev> Cadastro de Tarifa</h3>
+            </header>
+            
+            <div class="field-forms">
+                <div class="form-field">
+                    <Label>Número do vôo:</Label>
+                    <input id="numero_voo"  class ="form-control" type="text" name="" placeholder="digite o número do vôo">
+                    </div>
+
+                <div class="form-field">
+                    <Label>Código da tarifa:</Label>
+                    <input id="codigo_tarifa" class="form-control" type="text" placeholder="digite o código da tarifa">
+                </div>
+
+                <div class="form-field">
+                    <Label>Quantidade:</Label>
+                    <input id="quantidade" class="form-control" type="text" placeholder="digite a quantidade de tickets disponível">
+                </div>
+
+                <div class="form-field">
+                    <Label>Restrições:</Label>
+                    <input id="restricoes" class="form-control" type="text" placeholder="digite as restrições para essa tarifa">
+                </div>
+            </div>
+
+            <div class="button-field">
+                <button class="btn primary field" onclick="">Enviar</button>
+                <button type="button" class="btn primary field" onclick="">Listar</button>
+                <button type="button" class="btn primary field" onclick="">Atualizar</button>
+                <button type="button" class="btn primary field" onclick="">Deletar</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Vanta Cloud Effect-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+    <script type="text/javascript">
+        VANTA.CLOUDS({
+        el: "#vanta-canvas",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        skyColor: 0x2fb7f0,
+        cloudColor: 0xb4cbff
+        })
+    </script>
+</body>
+</html>
