@@ -3,32 +3,32 @@ create schema Compania_aereaTeste2;
 use Compania_aereaTeste2;
 
 create table Aeroporto(
-    Codigo_aeroporto VARCHAR(5) PRIMARY KEY,
+    Codigo_aeroporto INT auto_increment,
     nome VARCHAR(45) not null,
     Cidade VARCHAR(45) not null,
-    Estado VARCHAR(45) null
+    Estado VARCHAR(45) null,
+    primary key(Codigo_aeroporto)
 )ENGINE=InnoDB;
 
 create table Voo (
-    Numero_voo varchar(6) primary key,
+    Numero_voo int auto_increment,
     Companhia_aerea varchar(45) not null,
-    Dias_da_semana varchar(45) not null
+    Dias_da_semana varchar(45) not null,
+    primary key(Numero_voo)
 )ENGINE=InnoDB;
 
 create table Trecho_voo(
-    Numero_voo varchar(6), 
+    Numero_voo int, 
     Numero_trecho int, 
-    Codigo_aeroporto_partida varchar(5) unique not null, 
+    Codigo_aeroporto_partida int unique not null, 
     Horario_partida_previsto varchar(5) null, 
-    Codigo_aeroporto_chegada varchar(5) unique not null, 
+    Codigo_aeroporto_chegada int unique not null, 
     Horario_chegada_previsto varchar(10) null,
     PRIMARY KEY(Numero_voo, Numero_trecho)
 )ENGINE=InnoDB;
 
-
-
 create table TARIFA (
-    Numero_voo VARCHAR(6),
+    Numero_voo int,
     Codigo_tarifa INT,
     Quantidade decimal(4,2) null,
     Restricoes VARCHAR (50) null,
@@ -44,19 +44,19 @@ create table TIPO_AERONAVE (
 
 create table PODE_POUSAR (
     Nome_tipo_aeronave VARCHAR(45),
-    Codigo_aeroporto VARCHAR(5),
+    Codigo_aeroporto int,
     PRIMARY KEY (Nome_tipo_aeronave, Codigo_aeroporto)
 )ENGINE=InnoDB;
 
 create table AERONAVE (
-    Codigo_aeronave VARCHAR(5),
+    Codigo_aeronave int auto_increment,
     Numero_total_assentos VARCHAR(10) null,
     Tipo_aeronave VARCHAR(20) unique null,
     PRIMARY KEY (Codigo_aeronave)
 )ENGINE=InnoDB;
 
 create table RESERVA_ASSENTO(
-    Numero_voo VARCHAR(6),
+    Numero_voo INT,
     Numero_trecho INT,
     Data DATE,
     Numero_assento VARCHAR(10),
@@ -66,21 +66,22 @@ create table RESERVA_ASSENTO(
 )ENGINE=InnoDB;
 
 create table Instancia_trecho(
-    Numero_voo int, 
+    Numero_voo INT, 
     Numero_trecho int, 
     Data date, 
     Numero_assentos_disponiveis int null, 
-    Codigo_aeronave varchar(5) unique null, 
-    Codigo_aeroporto_partida varchar(5) unique null, 
+    Codigo_aeronave int unique null, 
+    Codigo_aeroporto_partida int unique null, 
     Horario_partida varchar(10)  null, 
-    Codigo_aeroporto_chegada varchar(5) unique null, 
+    Codigo_aeroporto_chegada int unique null, 
     Horario_chegada varchar(10) null,
-    PRIMARY KEY(Numero_voo, Numero_trecho, Data)
+    primary key (Numero_voo, Numero_trecho, Data)
     -- constraint foreign key fk_ins_ar (Codigo_aeroporto_partida) references Aeroporto(Codigo_aeroporto),
     -- constraint foreign key fk_ins_ar2 (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto),
     -- constraint foreign key fk_ins_coar (Codigo_aeronave) references AERONAVE (Codigo_aeronave),
     -- constraint foreign key fk_ins_ntr (Numero_trecho) references Trecho_voo(Numero_trecho)
 )ENGINE=InnoDB;
+
 
 -- foreign keys section
 alter table Trecho_voo
@@ -110,14 +111,11 @@ alter table Instancia_trecho
 -- does not work: missing index error 
 -- reserva_assento fk is missing
 -- Aeroporto table
-add foreign key (Codigo_aeroporto_partida )references Aeroporto(Codigo_aeroporto),
-add foreign key (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto),
+add foreign key (Codigo_aeroporto_partida )references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
+add foreign key (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
 -- AERONAVE table
-add foreign key (Codigo_aeronave) references AERONAVE (Codigo_aeronave),
+add foreign key (Codigo_aeronave) references AERONAVE (Codigo_aeronave) ON UPDATE CASCADE ON DELETE CASCADE,
 -- Trecho_voo table, error line
-add foreign key(Numero_trecho) references Trecho_voo(Numero_trecho)
-add foreign key ('int Column', Numero_trecho) references Trecho_voo **(Numero_trecho);**
+add foreign key (Numero_trecho) references Trecho_voo (Numero_trecho) ON UPDATE CASCADE ON DELETE CASCADE;
 -- RESERVA_ASSENTO table 
-
-
 commit;
