@@ -101,6 +101,8 @@ add foreign key(Codigo_aeroporto) references Aeroporto(Codigo_aeroporto) ON UPDA
 
 alter table Instancia_trecho
 -- not all fk inserted
+-- does not work: missing index error 
+-- reserva_assento fk is missing
 -- Aeroporto table
 add foreign key (Codigo_aeroporto_partida )references Aeroporto(Codigo_aeroporto),
 add foreign key (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto),
