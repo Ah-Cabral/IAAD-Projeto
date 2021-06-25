@@ -13,6 +13,8 @@
 table, th, td{
     border: 2px solid rgba(255, 255, 255, 0.823);
     background: rgba(255, 255, 255, 0.405);
+    backdrop-filter: blur(10px);
+    color: #236cd8;;
 }
 
 table{
@@ -39,8 +41,8 @@ td, th{
 }
 
 .card{
-    width: 50%;
-    height: 55vh;
+    width: 55%;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,6 +50,7 @@ td, th{
     border-radius: 5px;
     background-color: #b8c6db;
     background: rgba(255, 255, 255, 0.405);
+    backdrop-filter: blur(10px);
     z-index: 1;
 }
 
@@ -101,30 +104,6 @@ td, th{
     background-color:#1573c0;
 }
 
-.success{
-    background-color: #1e88e5;
-}
-
-.success:hover{
-    background-color:#1977c9;
-}
-
-.danger{
-    background-color: #1976d2;
-}
-
-.danger:hover{
-    background-color:#1664b3;
-}
-
-.update{
-    background-color: #1976d2;
-}
-
-.update:hover{
-    background-color:#165899;
-}
-
 .field{
     padding: .6rem 1.5rem;
 }
@@ -154,7 +133,7 @@ td, th{
 .button-field{
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
     gap: 1rem;
 }

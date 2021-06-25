@@ -33,7 +33,7 @@
 
                 <div  class="form-field">
                     <Label>Nome:</Label>
-                    <input id="nome" class="form-control" type="text" placeholder="Digite o nome do aeroporto">
+                    <input id="nomeAero" class="form-control" type="text" placeholder="Digite o nome do aeroporto">
                 </div> 
 
                 <div class="form-field"> 
@@ -48,10 +48,12 @@
             </div>
 
             <div class="button-field">
-                <button class="btn success field">Enviar</button>
+                <button class="btn primary field" onclick="addAirport()">Criar</button>
                 <button type="button" class="btn primary field" onclick="listAirport()">Listar</button>
-                <button type="button" class="btn update field">Atualizar</button>
-                <button type="button" class="btn danger field">Deletar</button>
+                <button type="button" class="btn primary field" onclick="updateAirport()">Atualizar</button>
+                <button type="button" class="btn primary field" onclick="dropAirport()">Deletar</button>
+                <button type="button" class="btn primary field" onclick="closeList()">Fechar Listagem</button>
+
             </div>
         </div>
         
@@ -70,7 +72,6 @@
 
     </div>
     
-    
     <!--Vanta Cloud Effect-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
@@ -87,5 +88,6 @@
         })
     </script>
     <script src="./script/Airport.js"></script>
+
 </body>
 </html>
