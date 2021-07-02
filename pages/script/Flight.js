@@ -49,6 +49,47 @@ function closeList(){
     cardAirport.style.display = 'none'
 }
 
+/*-=-=-=-= POST METHOD -=-=-=-=*/
+
+function htmlspecialchars(text) {
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function addAirport(){
+    
+    let codigoAeroporto = htmlspecialchars(document.getElementById('codigo_aeroporto').value);
+    let nomeAeroporto = htmlspecialchars(document.getElementById('nomeAero').value);
+    let cidadeAeroporto = htmlspecialchars(document.getElementById('cidade').value);
+    let estadoAeroporto = htmlspecialchars(document.getElementById('estado').value);
+    
+    fetch('http://localhost:1337/airport-add', {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            Codigo_aeroporto: codigoAeroporto,
+            Nome: nomeAeroporto,
+            Cidade: cidadeAeroporto,
+            Estado: estadoAeroporto
+        })
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error))
+
+    codigoAeroporto.innerText = '';
+}
+
+/*-=-=-=-= CLOSE LIST FUNCTION -=-=-=-=-=-=*/
+function closeList(){
+    cardAirport.style.display = 'none'
+}
 
 /*-=-=-=-= POST METHOD -=-=-=-=*/
 function htmlspecialchars(text) {
@@ -84,7 +125,6 @@ function addAirport(){
     .catch(error => console.log(error))
 
     codigoAeroporto.innerText = '';
-
 }
 
 /*-=-=-=-= PUT METHOD -=-=-=-=*/

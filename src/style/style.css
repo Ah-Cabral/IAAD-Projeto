@@ -11,10 +11,10 @@
 }
 
 table, th, td{
-    border: 2px solid rgba(255, 255, 255, 0.823);
-    background: rgba(255, 255, 255, 0.405);
-    backdrop-filter: blur(10px);
-    color: #236cd8;;
+    border: 2px solid #313337;
+    background: linear-gradient(120deg,  #343A4F, #0F1620) ;
+    color: #D5E1EF;
+
 }
 
 table{
@@ -48,11 +48,10 @@ td, th{
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    background-color: #b8c6db;
-    background: rgba(255, 255, 255, 0.405);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(120deg,  #343A4F, #0F1620) ;
     z-index: 1;
     padding: 30px;
+    color: #D5E1EF;
 }
 
 .card-airport{
@@ -71,7 +70,7 @@ td, th{
 .card-header{
     font-weight: 800;
     margin-bottom: 3rem;
-    color: #236cd8;
+    color: #D5E1EF;
     text-align: center;
 }
 
@@ -86,7 +85,6 @@ td, th{
 .btn{
     padding: .4rem;
     border-radius: 5px;
-    color: #e6f7ff;
     font-size: .75rem;
     font-weight: 500;
     overflow: hidden;
@@ -95,14 +93,15 @@ td, th{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: #D5E1EF;
 }
 
 .primary{
-    background-color: #2196f3
+    background: linear-gradient(90deg, #489be2, #0f629c);
 }
 
 .primary:hover{
-    background-color:#1573c0;
+    background: linear-gradient(90deg, #3b81bf, #0c4c7a);
 }
 
 .field{
@@ -124,11 +123,16 @@ td, th{
 }
 
 .form-field input{
-    background: rgba(255, 255, 255, 0.405);
-    color: #202021;
+    background: linear-gradient(90deg, #489be2, #0f629c);
+    border-radius: 30px;
+    color: #D5E1EF;
     border: none;
     outline: none;
     padding: .5rem;
+}
+
+.form-field input::placeholder{
+    color: #d5e1efbf;
 }
 
 .button-field{
@@ -137,6 +141,12 @@ td, th{
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
     gap: 1rem;
+}
+
+.airport-field{
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
 }
 
 @media (max-width: 480px) {
