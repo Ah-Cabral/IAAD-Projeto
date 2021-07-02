@@ -125,12 +125,40 @@ on TARIFA
 for each row
 set new.Quantidade = (new.Quantidade*0.85);
 
-create trigger tr_nassento after insert
+create trigger tr_nassento_insert after insert
 on reserva_assento
 for each row
 update Instancia_trecho
 set Numero_assentos_disponiveis = Numero_assentos_disponiveis - 1
 where (Instancia_trecho.Numero_voo = RESERVA_ASSENTO.Numero_voo )and (Instancia_trecho.Numero_trecho = RESERVA_ASSENTO.Numero_trecho) and Instancia_trecho.Data1 = RESERVA_ASSENTO.Data1;
 
+create trigger tr_nassento_delete after delete
+on reserva_assento
+for each row
+update Instancia_trecho
+set Numero_assentos_disponiveis = Numero_assentos_disponiveis +1
+where (Instancia_trecho.Numero_voo = RESERVA_ASSENTO.Numero_voo )and (Instancia_trecho.Numero_trecho = RESERVA_ASSENTO.Numero_trecho) and Instancia_trecho.Data1 = RESERVA_ASSENTO.Data1;
+
+-- procedure section
+create procedure Informacao_aeronave (Numero_voo int)
+select voo.Companhia_aerea from voo as A, reserva_assento as B
+where A.Numero_voo = B.Numero_voo;
+
+-- funções de agregação
+
+-- passagem de avião mais barata
+
+select min(TARIFA.Quantidade) from TARIFA;
+
+-- entre as datas 
+select count(Instancia_trecho.Data1) 
+from Instancia_trecho
+where Data1 between 2020-06-24 and 2020-09-01;
+
+-- função de agrupamento
+
+select voo.Companhia_aerea, count(reserva_assento.Nome_cliente) from reserva_assento as A, voo as B
+where A.Numero_voo=B.Numero_voo
+group by Companhia_aerea;
 
 commit;
