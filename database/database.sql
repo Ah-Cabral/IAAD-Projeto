@@ -117,7 +117,7 @@ add foreign key (Codigo_aeronave) references AERONAVE (Codigo_aeronave) ON UPDAT
 add foreign key (Numero_trecho) references Trecho_voo (Numero_trecho) ON UPDATE CASCADE ON DELETE CASCADE;
 -- RESERVA_ASSENTO table 
 
---end of the foreign keys section
+-- end of the foreign keys section
 
 -- trigger section
 create trigger tr_desconto before insert
