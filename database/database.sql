@@ -75,49 +75,38 @@ create table Instancia_trecho(
     Horario_partida varchar(10)  null, 
     Codigo_aeroporto_chegada int unique null, 
     Horario_chegada varchar(10) null,
-    primary key (Numero_voo, Numero_trecho, Data1),    
-    constraint Codigo_aeroporto_partida_1 foreign key fk_ins_ar (Codigo_aeroporto_partida) references Aeroporto (Codigo_aeroporto),
-    constraint Codigo_aeroporto_chegada_1 foreign key  fk_ins_ar2 (Codigo_aeroporto_chegada) references Aeroporto (Codigo_aeroporto),
-    constraint Numero_trecho_1 foreign key fk_ins_ntr (Numero_trecho) references  Trecho_voo(Numero_trecho),
-    constraint Codigo_aeronave_1 foreign key fk_ins_coar (Codigo_aeronave) references  AERONAVE (Codigo_aeronave)
+    primary key (Numero_voo, Numero_trecho, Data1)  
 )ENGINE=InnoDB;
+
 -- foreign keys section
 alter table Trecho_voo
--- all fk inserted
--- Aeroporto table
+
 add foreign key (Codigo_aeroporto_partida )references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
 add foreign key (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
--- voo table
+
 add foreign key (Numero_voo) references voo(Numero_voo) ON UPDATE CASCADE ON DELETE CASCADE;
 
 alter table TARIFA
--- all fk inserted
--- voo table
+
 add foreign key (Numero_voo) references voo(Numero_voo) ON UPDATE CASCADE ON DELETE CASCADE;
 
 alter table AERONAVE
--- all fk inserted
 add foreign key (Tipo_aeronave) references TIPO_AERONAVE(Nome_tipo_aeronave) ON UPDATE CASCADE ON DELETE CASCADE;
 
 alter table PODE_POUSAR
--- all fk inserted
 add foreign key(Nome_tipo_aeronave) references Tipo_aeronave(Nome_tipo_aeronave) ON UPDATE CASCADE ON DELETE CASCADE,
 add foreign key(Codigo_aeroporto) references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE;
 
 alter table Instancia_trecho
--- not all fk inserted
--- does not work: missing index error 
--- reserva_assento fk is missing
--- Aeroporto table
+
 add foreign key (Codigo_aeroporto_partida )references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
 add foreign key (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
--- AERONAVE table
 add foreign key (Codigo_aeronave) references AERONAVE (Codigo_aeronave) ON UPDATE CASCADE ON DELETE CASCADE,
--- Trecho_voo table, error line
-add foreign key (Numero_trecho) references Trecho_voo (Numero_trecho) ON UPDATE CASCADE ON DELETE CASCADE;
--- RESERVA_ASSENTO table 
 
--- end of the foreign keys section
+add foreign key (Numero_trecho) references Trecho_voo (Numero_trecho) ON UPDATE CASCADE ON DELETE CASCADE;
+
+alter table reserva_assento
+add foreign key(Numero_trecho) references Instancia_trecho(Numero_trecho);
 
 -- trigger section
 create trigger tr_desconto before insert
@@ -151,13 +140,13 @@ where A.Numero_voo = B.Numero_voo;
 select min(TARIFA.Quantidade) from TARIFA;
 
 -- entre as datas 
-select count(Instancia_trecho.Data1) 
+select count(Instancia_trecho.Data1) as quant_trechos_data
 from Instancia_trecho
 where Data1 between 2020-06-24 and 2020-09-01;
 
 -- função de agrupamento
 
-select voo.Companhia_aerea, count(reserva_assento.Nome_cliente) from reserva_assento as A, voo as B
+select B.Companhia_aerea, count(A.Nome_cliente) as quant_clientes from reserva_assento as A, voo as B
 where A.Numero_voo=B.Numero_voo
 group by Companhia_aerea;
 
