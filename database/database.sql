@@ -226,10 +226,6 @@ insert into RESERVA_ASSENTO values
     (7, 7, '2021-06-27', 25,"Carla", "987651533"),
     (8, 8, '2021-06-29', 15,"Natalia", "998664512");
 -- trigger section
-create trigger tr_desconto before insert
-on TARIFA
-for each row
-set new.Quantidade = (new.Quantidade*0.85);
 
 create trigger tr_nassento_insert after insert
 on reserva_assento
@@ -246,11 +242,11 @@ set Numero_assentos_disponiveis = Numero_assentos_disponiveis +1
 where (Instancia_trecho.Numero_voo = RESERVA_ASSENTO.Numero_voo )and (Instancia_trecho.Numero_trecho = RESERVA_ASSENTO.Numero_trecho) and Instancia_trecho.Data1 = RESERVA_ASSENTO.Data1;
 
 -- stored procedure section
-create procedure Informacao_aeronave (Numero_voo int)
-select voo.Companhia_aerea from voo as A, reserva_assento as B
-where A.Numero_voo = B.Numero_voo;
-
--- call Informacao_aeronave();
+create procedure informacao_detalhada_voos (in numero_voo_p int)
+select A.Companhia_aerea, C.nome as Aeroporto, C.Cidade, C.Estado
+from Voo as A inner join Trecho_voo as B
+on B.Numero_voo = numero_voo_p and B.Numero_voo = A.Numero_voo 
+inner join Aeroporto as C on (B.Codigo_aeroporto_chegada = C.Codigo_aeroporto ) or  (B.Codigo_aeroporto_partida = C.Codigo_aeroporto );
 
 -- consultas
 
