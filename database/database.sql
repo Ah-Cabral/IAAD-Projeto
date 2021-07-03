@@ -1,6 +1,6 @@
 begin;
-create schema Compania_aereaPop;
-use Compania_aereaPop;
+create schema Compania_aerea;
+use Compania_aerea;
 
 create table Aeroporto(
     Codigo_aeroporto INT auto_increment,
@@ -128,10 +128,16 @@ update Instancia_trecho
 set Numero_assentos_disponiveis = Numero_assentos_disponiveis +1
 where (Instancia_trecho.Numero_voo = RESERVA_ASSENTO.Numero_voo )and (Instancia_trecho.Numero_trecho = RESERVA_ASSENTO.Numero_trecho) and Instancia_trecho.Data1 = RESERVA_ASSENTO.Data1;
 
--- procedure section
+-- stored procedure section
 create procedure Informacao_aeronave (Numero_voo int)
 select voo.Companhia_aerea from voo as A, reserva_assento as B
 where A.Numero_voo = B.Numero_voo;
+
+-- call Informacao_aeronave();
+-- junção
+
+select A.Quantidade as Valor, B.Companhia_aerea from TARIFA as A join Voo as B 
+ON A.Numero_voo=B.Numero_voo;
 
 -- funções de agregação
 
