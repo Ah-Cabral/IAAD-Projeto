@@ -83,7 +83,7 @@ td, th{
 }
 
 .btn{
-    padding: 1.5rem;
+    padding: .4rem;
     border-radius: 5px;
     font-size: 1rem;
     font-weight: 500;
@@ -93,6 +93,10 @@ td, th{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: #D5E1EF;
+}
+
+.btn a{
     color: #D5E1EF;
 }
 
