@@ -6,7 +6,7 @@ let tbody = document.querySelector('.card-airport').getElementsByTagName('tbody'
 //content of the table and will put inside a list.
 
 function listAirport() {
-    fetch('http://localhost:1337/airport-list')
+    fetch('http://localhost:8080/airport-list')
     .then(response => response.json())
     .then(data => printAirports(data))
 };
@@ -67,7 +67,7 @@ function addAirport(){
     let cidadeAeroporto = htmlspecialchars(document.getElementById('cidade').value);
     let estadoAeroporto = htmlspecialchars(document.getElementById('estado').value);
     
-    fetch('http://localhost:1337/airport-add', {
+    fetch('http://localhost:8080/airport-add', {
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ function addAirport(){
     let cidadeAeroporto = htmlspecialchars(document.getElementById('cidade').value);
     let estadoAeroporto = htmlspecialchars(document.getElementById('estado').value);
     
-    fetch('http://localhost:1337/airport-add', {
+    fetch('http://localhost:8080/airport-add', {
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'
@@ -136,7 +136,7 @@ function updateAirport(){
     let cidadeAeroporto = htmlspecialchars(document.getElementById('cidade').value);
     let estadoAeroporto = htmlspecialchars(document.getElementById('estado').value);
     
-    fetch('http://localhost:1337/airport-update', {
+    fetch('http://localhost:8080/airport-update', {
         method: 'PUT',
         headers:{
             'Content-Type': 'application/json'
@@ -159,7 +159,7 @@ function dropAirport(){
     
     let codigoAeroporto = htmlspecialchars(document.getElementById('codigo_aeroporto').value);
     
-    fetch('http://localhost:1337/airport-delete', {
+    fetch('http://localhost:8080/airport-delete', {
         method: 'DELETE',
         headers:{
             'Content-Type': 'application/json'
