@@ -120,6 +120,11 @@ td, th{
     margin-bottom: 1rem;
 }
 
+.voo-field{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
 .form-field{
     display: flex;
     flex-direction: column;
@@ -143,7 +148,7 @@ td, th{
     margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     gap: 1rem;
 }
 
