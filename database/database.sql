@@ -106,8 +106,9 @@ add foreign key (Codigo_aeronave) references AERONAVE (Codigo_aeronave) ON UPDAT
 add foreign key (Numero_trecho) references Trecho_voo (Numero_trecho) ON UPDATE CASCADE ON DELETE CASCADE;
 
 alter table reserva_assento
-add foreign key(Numero_trecho) references Instancia_trecho(Numero_trecho);
-
+add foreign key(Numero_trecho) references Instancia_trecho(Numero_trecho) ON UPDATE CASCADE ON DELETE CASCADE,
+add foreign key(Numero_voo) references Instancia_trecho(Numero_voo) ON UPDATE CASCADE ON DELETE CASCADE,
+add foreign key(Data1) references Instancia_trecho(Data1) ON UPDATE CASCADE ON DELETE CASCADE;
 -- data
 insert into Aeroporto values
 	(1, "Aeroporto do Recife", "Recife", "Pernambuco"),
@@ -225,6 +226,7 @@ insert into RESERVA_ASSENTO values
     (6, 6, '2021-06-26', 80,"José", "998731532"),
     (7, 7, '2021-06-27', 25,"Carla", "987651533"),
     (8, 8, '2021-06-29', 15,"Natalia", "998664512");
+    
 -- trigger section
 
 create trigger tr_nassento_insert after insert
