@@ -142,8 +142,8 @@ td, th{
 .button-field{
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
     gap: 1rem;
 }
 
