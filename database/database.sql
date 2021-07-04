@@ -62,11 +62,11 @@ create table RESERVA_ASSENTO(
     Numero_assento VARCHAR(10),
     Nome_cliente VARCHAR(50) null,
     Telefone_cliente VARCHAR(10) unique,
-    PRIMARY KEY(Numero_voo, Numero_trecho, Data1, Numero_assento)
+    PRIMARY KEY(Numero_assento)
 )ENGINE=InnoDB;
 
 create table Instancia_trecho(
-    Numero_voo INT, 
+    Numero_voo INT unique, 
     Numero_trecho int, 
     Data1 date, 
     Numero_assentos_disponiveis int null, 
@@ -75,7 +75,7 @@ create table Instancia_trecho(
     Horario_partida varchar(10)  null, 
     Codigo_aeroporto_chegada int unique null, 
     Horario_chegada varchar(10) null,
-    primary key (Numero_voo, Numero_trecho, Data1)  
+    primary key (Data1)  
 )ENGINE=InnoDB;
 
 -- foreign keys section
@@ -109,6 +109,7 @@ alter table reserva_assento
 add foreign key(Numero_trecho) references Instancia_trecho(Numero_trecho) ON UPDATE CASCADE ON DELETE CASCADE,
 add foreign key(Numero_voo) references Instancia_trecho(Numero_voo) ON UPDATE CASCADE ON DELETE CASCADE,
 add foreign key(Data1) references Instancia_trecho(Data1) ON UPDATE CASCADE ON DELETE CASCADE;
+
 -- data
 insert into Aeroporto values
 	(1, "Aeroporto do Recife", "Recife", "Pernambuco"),
@@ -224,9 +225,8 @@ insert into RESERVA_ASSENTO values
     (4, 4, '2021-06-23', 25,"Carlos", "98965538"),
     (5, 5, '2021-07-01', 77,"Jorge", "987562532"),
     (6, 6, '2021-06-26', 80,"José", "998731532"),
-    (7, 7, '2021-06-27', 25,"Carla", "987651533"),
-    (8, 8, '2021-06-29', 15,"Natalia", "998664512");
-    
+    (7, 7, '2021-06-27', 26,"Carla", "987651533"),
+    (8, 8, '2021-06-28', 15,"Natalia", "998664512");
 -- trigger section
 
 create trigger tr_nassento_insert after insert
@@ -253,7 +253,7 @@ inner join Aeroporto as C on (B.Codigo_aeroporto_chegada = C.Codigo_aeroporto ) 
 -- consultas
 
 -- média de tarifa de cada companhia aérea
-select A.Companhia_aerea, avg(B.Quantidade) as Média_tarifa from Companhia_aerea as A inner join TARIFA as B 
+select A.Companhia_aerea, avg(B.Quantidade) as Média_tarifa from Voo as A inner join TARIFA as B 
 on A.Numero_voo=B.Numero_voo 
 group by A.Companhia_aerea;
 
