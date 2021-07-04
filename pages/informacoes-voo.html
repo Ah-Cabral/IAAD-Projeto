@@ -14,6 +14,15 @@
     <link rel="manifest" href="src/assets/icon/site.webmanifest">
 
     <link rel="stylesheet" href="../src/style/style.css">
+    <style type="text/css">
+        .field-forms{
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+        }
+        .button-field{
+            grid-template-columns: repeat(3, 1fr);
+        }
+    </style>
 
     <title> </AeroDev> </title>
 </head>
@@ -23,10 +32,10 @@
 
         <div class="card">
             <header class="card-header">
-                 <h3> </AeroDev>< /AeroDev>  - Cadastro de instância de Trecho de vôo</h3>
+                 <h3> </AeroDev>< /AeroDev>  - Informações de vôo</h3>
             </header>
             
-            <div class="field-forms">
+            <div class="field-forms voo-field">
                 <div  class="form-field">
                     <Label>Número do vôo:</Label>
                     <input id="numero_voo"  class ="form-control" type="text" name="" placeholder="Digite o número do vôo">
@@ -35,10 +44,12 @@
 
             <div class="button-field">
                 <button type="button" class="btn primary field" onclick="">Listar</button>
+                <button type="button" class="btn primary field" onclick="">Fechar listagem</button>
+                <a href="../index.html"  class="btn primary field">Voltar</a>
             </div>
         </div>
     </div>
-    
+
     <!--Vanta Cloud Effect-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
