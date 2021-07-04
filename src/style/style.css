@@ -54,7 +54,7 @@ td, th{
     color: #D5E1EF;
 }
 
-.card-airport{
+.card-airport, .card-rates{
     display: none;
 }
 
