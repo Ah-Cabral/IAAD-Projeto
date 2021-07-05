@@ -15,8 +15,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="src/assets/icon/favicon-16x16.png">
     <link rel="manifest" href="src/assets/icon/site.webmanifest">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="src/style/style.css">
+    <link rel="stylesheet" href="../src/style/style.css">
 
     <title> </AeroDev> </title>
 </head>
@@ -29,14 +28,23 @@
                 <h2>Escolha Sua Opção ;)</h2>
             </div>
 
-            <div class="card-body">
-                <a href="./pages/aeroporto.html" class="btn primary" >Aeroporto</a>
-                <a href="./pages/tarifa.html" class="btn primary" >Tarifa</a>
-                <a href="./pages/media-quantidade.html" class="btn primary"> Média De Tarifas </a>
-                <a href="./pages/quantidade-voo.html" class="btn primary"> Quantidade Vôos </a>
+            <div class="card-body card-extras">
+                <a class="btn primary" onclick="listRates()"> Média das tarifas das companhias </a>
+                <a class="btn primary" onclick=" closeList()"> Fechar listagem </a>
+                <a href="../index.html" class="btn primary" > Voltar </a>
             </div>
-
         </div>
+
+        <table class="card-avg-rates">
+            <thead> 
+                <tr> 
+                    <th> Companhia Aerea </th> 
+                    <th> Média da Quantidade </th> 
+                </tr>  
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 
     <!--Vanta Cloud Effect-->
@@ -54,6 +62,6 @@
         cloudColor: 0xb4cbff
         })
     </script>
-
+    <script src="./script/AvgRates.js"></script>
 </body>
 </html>
