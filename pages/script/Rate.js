@@ -48,7 +48,6 @@ function closeList(){
     cardRates.style.display = 'none'
 }
 
-
 /*-=-=-=-= POST METHOD -=-=-=-=*/
 function htmlspecialchars(text) {
     return text
