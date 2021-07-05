@@ -41,8 +41,7 @@ td, th{
 }
 
 .card{
-    /* width: 55%; */
-    /* height: 60vh; */
+    width: 45%; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,7 +53,7 @@ td, th{
     color: #D5E1EF;
 }
 
-.card-airport{
+.card-airport, .card-rates, .card-infos, .card-avg-rates, .card-quant-voos{
     display: none;
 }
 
@@ -76,16 +75,22 @@ td, th{
 
 .card-body{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 2rem;
     text-align: center;
+}
+
+.card-extras{
+    width: 70%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
 }
 
 .btn{
     padding: .4rem;
     border-radius: 5px;
-    font-size: .75rem;
+    font-size: 1rem;
     font-weight: 500;
     overflow: hidden;
     border: none;
@@ -93,6 +98,10 @@ td, th{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: #D5E1EF;
+}
+
+.btn a{
     color: #D5E1EF;
 }
 
@@ -114,6 +123,11 @@ td, th{
     grid-template-rows: repeat(2, 1fr);
     gap: 2rem;
     margin-bottom: 1rem;
+}
+
+.voo-field{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 }
 
 .form-field{
@@ -138,7 +152,7 @@ td, th{
 .button-field{
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
     gap: 1rem;
 }

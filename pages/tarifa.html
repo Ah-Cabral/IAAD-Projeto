@@ -49,12 +49,28 @@
             </div>
 
             <div class="button-field">
-                <button class="btn primary field" onclick="">Enviar</button>
-                <button type="button" class="btn primary field" onclick="">Listar</button>
-                <button type="button" class="btn primary field" onclick="">Atualizar</button>
-                <button type="button" class="btn primary field" onclick="">Deletar</button>
+                <button class="btn primary field" onclick="addRate()">Enviar</button>
+                <button type="button" class="btn primary field" onclick="listRate()">Listar</button>
+                <button type="button" class="btn primary field" onclick="updateRate()">Atualizar</button>
+                <button type="button" class="btn primary field" onclick="dropRate()">Deletar</button>
+                <button type="button" class="btn primary field" onclick="closeList()">Fechar Listagem</button>
+                <a href="../index.html"  class="btn primary field">Voltar</a>
             </div>
         </div>
+
+        <table class="card-rates">
+            <thead> 
+                <tr> 
+                    <th> Numero do Vôo </th> 
+                    <th> Código da Tarifa </th> 
+                    <th> Quantidade </th> 
+                    <th> Restrições </th>
+                </tr>  
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
     </div>
 
     <!--Vanta Cloud Effect-->
@@ -72,5 +88,8 @@
         cloudColor: 0xb4cbff
         })
     </script>
+
+    <!--Connection to Default Script-->
+    <script src="./script/Rate.js"></script>
 </body>
 </html>
