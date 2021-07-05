@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<he<!DOCTYPE html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
 
@@ -7,7 +9,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--Ícone do Site-->
+    <!-- Site Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="src/assets/icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="src/assets/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="src/assets/icon/favicon-16x16.png">
@@ -19,25 +21,20 @@
 </head>
 <body>
 
-    <div id="vanta-canvas" class="container">
-
+    <div id="vanta-canvas" class="container" >
         <div class="card">
-            <header class="card-header">
-                 <h3> AeroDev  - Informações de vôo</h3>
-            </header>
-            
-            <div class="field-forms voo-field">
-                <div  class="form-field">
-                    <Label>Número do vôo:</Label>
-                    <input id="numero_voo"  class ="form-control" type="text" name="" placeholder="Digite o número do vôo">
-                </div>
+
+            <div class="card-header">
+                <h2>Escolha Sua Opção ;)</h2>
             </div>
 
-            <div class="button-field">
-                <button type="button" class="btn primary field" onclick="">Listar</button>
-                <button type="button" class="btn primary field" onclick="">Fechar listagem</button>
-                <a href="../index.html"  class="btn primary field">Voltar</a>
+            <div class="card-body">
+                <a href="./pages/aeroporto.html" class="btn primary" > Vôo por aeroporto </a>
+                <a href="./pages/tarifa.html" class="btn primary" > Média das tarifas das companhias </a>
+                <a href="./pages/trecho_vôo.html" class="btn primary" > Fechar listagem </a>
+                <a href="../index.html" class="btn primary" > Voltar </a>
             </div>
+
         </div>
     </div>
 
@@ -56,6 +53,6 @@
         cloudColor: 0xb4cbff
         })
     </script>
-    <script src="./script/Airport.js"></script>
+
 </body>
 </html>
