@@ -64,8 +64,8 @@ function addRate(){
     let numeroVoo = htmlspecialchars(document.getElementById('numero_voo').value);
     let codigoTarifa = htmlspecialchars(document.getElementById('codigo_tarifa').value);
     let Quantidade = htmlspecialchars(document.getElementById('quantidade').value);
-    let restricoes = htmlspecialchars(document.getElementById('restricoes').value);
-    
+    let Restricoes = htmlspecialchars(document.getElementById('restricoes').value);
+
     fetch('http://localhost:3306/rate-add', {
         method: 'POST',
         headers:{
@@ -75,14 +75,12 @@ function addRate(){
             Numero_voo: numeroVoo,
             Codigo_tarifa: codigoTarifa,
             Quantidade: Quantidade,
-            Restricoes: restricoes
+            Restricoes: Restricoes
         })
     })
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.log(error))
-
-    numeroVoo.innerText = '';
 
 }
 
