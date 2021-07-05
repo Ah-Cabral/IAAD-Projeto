@@ -41,8 +41,7 @@ td, th{
 }
 
 .card{
-    /* width: 55%; */
-    /* height: 60vh; */
+    width: 45%; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,7 +53,7 @@ td, th{
     color: #D5E1EF;
 }
 
-.card-airport, .card-rates, .card-infos{
+.card-airport, .card-rates, .card-infos, .card-avg-rates, .card-quant-voos{
     display: none;
 }
 
@@ -80,6 +79,12 @@ td, th{
     grid-template-rows: repeat(2, 1fr);
     gap: 2rem;
     text-align: center;
+}
+
+.card-extras{
+    width: 70%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
 }
 
 .btn{
