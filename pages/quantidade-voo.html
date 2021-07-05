@@ -28,14 +28,25 @@
                 <h2>Escolha Sua Opção ;)</h2>
             </div>
 
-            <div class="card-body">
-                <a href="./pages/aeroporto.html" class="btn primary" > Vôo por aeroporto </a>
-                <a href="./pages/tarifa.html" class="btn primary" > Média das tarifas das companhias </a>
-                <a href="./pages/trecho_vôo.html" class="btn primary" > Fechar listagem </a>
+            <div class="card-body card-extras">
+                <a class="btn primary" onclick="listQuantVoos()"> Vôos por aeroporto </a>
+                <a class="btn primary" onclick=" closeList()"> Fechar listagem </a>
                 <a href="../index.html" class="btn primary" > Voltar </a>
             </div>
 
         </div>
+
+        <table class="card-quant-voos">
+            <thead> 
+                <tr> 
+                    <th> Nome </th> 
+                    <th> Quantos Vôos Partem </th> 
+                </tr>  
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
     </div>
 
     <!--Vanta Cloud Effect-->
@@ -53,6 +64,6 @@
         cloudColor: 0xb4cbff
         })
     </script>
-
+    <script src="./script/Quantidade-voos.js"></script>
 </body>
 </html>
