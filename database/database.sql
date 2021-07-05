@@ -20,11 +20,11 @@ create table Voo (
 create table Trecho_voo(
     Numero_voo int, 
     Numero_trecho int, 
-    Codigo_aeroporto_partida int unique not null, 
+    Codigo_aeroporto_partida int not null, 
     Horario_partida_previsto varchar(5) null, 
-    Codigo_aeroporto_chegada int unique not null, 
+    Codigo_aeroporto_chegada int not null, 
     Horario_chegada_previsto varchar(10) null,
-    PRIMARY KEY(Numero_trecho, Numero_voo)
+    PRIMARY KEY(Numero_trecho)
 )ENGINE=InnoDB;
 
 create table TARIFA (
@@ -66,16 +66,16 @@ create table RESERVA_ASSENTO(
 )ENGINE=InnoDB;
 
 create table Instancia_trecho(
-    Numero_voo INT unique, 
+    Numero_voo INT, 
     Numero_trecho int, 
     Data1 date, 
     Numero_assentos_disponiveis int null, 
-    Codigo_aeronave int unique null, 
-    Codigo_aeroporto_partida int unique null, 
+    Codigo_aeronave int null, 
+    Codigo_aeroporto_partida int null, 
     Horario_partida varchar(10)  null, 
-    Codigo_aeroporto_chegada int unique null, 
+    Codigo_aeroporto_chegada int null, 
     Horario_chegada varchar(10) null,
-    primary key (Data1)  
+    primary key(Data1)
 )ENGINE=InnoDB;
 
 -- foreign keys section
@@ -83,11 +83,9 @@ alter table Trecho_voo
 
 add foreign key (Codigo_aeroporto_partida )references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
 add foreign key (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
-
 add foreign key (Numero_voo) references voo(Numero_voo) ON UPDATE CASCADE ON DELETE CASCADE;
 
 alter table TARIFA
-
 add foreign key (Numero_voo) references voo(Numero_voo) ON UPDATE CASCADE ON DELETE CASCADE;
 
 alter table AERONAVE
@@ -98,11 +96,10 @@ add foreign key(Nome_tipo_aeronave) references Tipo_aeronave(Nome_tipo_aeronave)
 add foreign key(Codigo_aeroporto) references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE;
 
 alter table Instancia_trecho
-
-add foreign key (Codigo_aeroporto_partida )references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
+add foreign key (Numero_voo)references Voo(Numero_voo) ON UPDATE CASCADE ON DELETE CASCADE,
+add foreign key (Codigo_aeroporto_partida)references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
 add foreign key (Codigo_aeroporto_chegada) references Aeroporto(Codigo_aeroporto) ON UPDATE CASCADE ON DELETE CASCADE,
 add foreign key (Codigo_aeronave) references AERONAVE (Codigo_aeronave) ON UPDATE CASCADE ON DELETE CASCADE,
-
 add foreign key (Numero_trecho) references Trecho_voo (Numero_trecho) ON UPDATE CASCADE ON DELETE CASCADE;
 
 alter table reserva_assento
@@ -228,6 +225,11 @@ insert into RESERVA_ASSENTO values
     (7, 7, '2021-06-27', 26,"Carla", "987651533"),
     (8, 8, '2021-06-28', 15,"Natalia", "998664512");
 -- trigger section
+
+create trigger tr_tarifa before insert
+on TARIFA
+for each row
+set new.Quantidade = new.Quantidade*0.85;
 
 create trigger tr_nassento_insert after insert
 on reserva_assento
